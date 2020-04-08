@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+    stage('Lint HTML') {
+      steps {
+        sh 'echo "Linting HTML files"'
+        sh 'tidy -q -e *.html'
+      }
+    }
     stage('Upload to AWS') {
       steps {
         sh 'echo "Uploading site to s3 bucket"'
